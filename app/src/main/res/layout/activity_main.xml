@@ -11,7 +11,8 @@
         android:id="@+id/ScanPayButton"
         android:layout_width="133dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="@android:color/holo_orange_light"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/ScanPay"
@@ -21,16 +22,15 @@
         app:iconPadding="0dp"
         app:iconSize="22dp"
         app:iconTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/newParkButton"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="VisualLintOverlap" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/TopNavBar"
         android:layout_width="416dp"
         android:layout_height="101dp"
         android:background="@drawable/honolulu"
@@ -46,13 +46,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Park"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/nice_blue"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@+id/TopNavBar"
         app:layout_constraintEnd_toStartOf="@+id/Pal"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="@+id/TopNavBar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -71,15 +71,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="319dp"
-        android:layout_height="246dp"
+        android:layout_width="341dp"
+        android:layout_height="212dp"
         android:layout_marginTop="120dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.284">
+        app:layout_constraintTop_toBottomOf="@+id/TopNavBar"
+        app:layout_constraintVertical_bias="0.201"
+        android:elevation="8dp"
+        android:padding="16dp">
 
 
         <ImageView
@@ -108,8 +110,8 @@
         <ImageView
             android:id="@+id/Arrow_three"
             android:layout_width="27dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="4dp"
             android:contentDescription="@string/ImageInfo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -118,43 +120,49 @@
 
         <TextView
             android:id="@+id/EasierView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="283dp"
+            android:layout_height="25dp"
             android:backgroundTint="@android:color/holo_orange_light"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/StringOne"
             android:textColor="@color/black"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.475" />
+            app:layout_constraintVertical_bias="0.55"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/TrackView"
-            android:layout_width="183dp"
-            android:layout_height="36dp"
+            android:layout_width="283dp"
+            android:layout_height="27dp"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/StringTwo"
             android:textColor="@color/black"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="@+id/EasierView"
-            app:layout_constraintTop_toBottomOf="@+id/EasierView" />
+            app:layout_constraintTop_toBottomOf="@+id/EasierView"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/ExpandView"
-            android:layout_width="182dp"
-            android:layout_height="39dp"
+            android:layout_width="284dp"
+            android:layout_height="28dp"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/StringThree"
             android:textColor="@color/black"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="@+id/TrackView"
-            app:layout_constraintTop_toBottomOf="@+id/TrackView" />
+            app:layout_constraintTop_toBottomOf="@+id/TrackView"
+            tools:ignore="TextSizeCheck" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/HonoluluImage"
             android:layout_width="16dp"
             android:layout_height="18dp"
             android:layout_marginEnd="10dp"
@@ -174,12 +182,14 @@
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/RegisterString"
             android:textColor="@color/nice_blue"
-            android:textSize="14sp"
+            android:textSize="15dp"
             android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
             app:layout_constraintBottom_toTopOf="@+id/EasierView"
             app:layout_constraintEnd_toEndOf="@+id/Arrow_three"
             app:layout_constraintStart_toStartOf="@+id/Arrow_three"
-            app:layout_constraintTop_toBottomOf="@+id/Arrow_three" />
+            app:layout_constraintTop_toBottomOf="@+id/Arrow_three"
+            app:rippleColor="@android:color/transparent"
+            tools:ignore="TextSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -191,10 +201,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/TopNavBar"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="VisualLintBounds,TextSizeCheck">
-
+        tools:ignore="VisualLintBounds,TextSizeCheck"
+        android:elevation="8dp">
         <TextView
             android:id="@+id/TomorrowField"
             android:layout_width="88dp"
@@ -335,7 +345,8 @@
         android:id="@+id/newParkButton"
         android:layout_width="133dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="@android:color/holo_orange_light"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/Parking"
@@ -345,15 +356,14 @@
         app:iconPadding="0dp"
         app:iconSize="22dp"
         app:iconTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
         app:layout_constraintEnd_toStartOf="@+id/ScanPayButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"/>
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/BottomNavBar"
         android:layout_width="416dp"
         android:layout_height="61dp"
         android:background="@color/nice_blue"
@@ -375,7 +385,7 @@
         app:iconGravity="textTop"
         app:iconPadding="0dp"
         app:iconSize="25dp"
-        app:iconTint="@color/white"
+        app:iconTint="@color/material_dynamic_neutral90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/MapButton"
         app:layout_constraintHorizontal_bias="0.5"
@@ -389,12 +399,12 @@
         android:backgroundTint="@color/nice_blue"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/Map"
-        android:textColor="@color/white"
+        android:textColor="@color/material_dynamic_neutral90"
         android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
         app:icon="@drawable/baseline_map_24"
         app:iconGravity="top"
         app:iconPadding="0dp"
-        app:iconTint="@color/white"
+        app:iconTint="@color/material_dynamic_neutral90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/WalletButton"
         app:layout_constraintHorizontal_bias="0.5"
@@ -408,12 +418,12 @@
         android:backgroundTint="@color/nice_blue"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/History"
-        android:textColor="@color/white"
+        android:textColor="@color/material_dynamic_neutral90"
         android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
         app:icon="@drawable/baseline_history_24"
         app:iconGravity="top"
         app:iconPadding="0dp"
-        app:iconTint="#FFFFFF"
+        app:iconTint="@color/material_dynamic_neutral90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -426,12 +436,12 @@
         android:backgroundTint="@color/nice_blue"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/Wallet"
-        android:textColor="@color/white"
+        android:textColor="@color/material_dynamic_neutral90"
         android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
         app:icon="@drawable/baseline_wallet_24"
         app:iconGravity="top"
         app:iconPadding="0dp"
-        app:iconTint="@color/white"
+        app:iconTint="@color/material_dynamic_neutral90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/HistoryButton"
         app:layout_constraintHorizontal_bias="0.5"

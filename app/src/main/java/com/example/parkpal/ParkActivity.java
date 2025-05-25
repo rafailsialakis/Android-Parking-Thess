@@ -152,14 +152,4 @@ public class ParkActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            finishAffinity();
-        } else {
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
-        }
-
-        backPressedTime = System.currentTimeMillis();
-    }
 }

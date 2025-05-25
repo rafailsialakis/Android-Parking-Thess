@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral90"
+    android:backgroundTint="@color/material_dynamic_neutral90">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/TopNavBar"
+        android:layout_width="416dp"
+        android:layout_height="101dp"
+        android:background="@drawable/honolulu"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds" />
+
+    <Button
+        android:id="@+id/LogoutButton"
+        android:layout_width="54dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:background="@android:color/transparent"
+        app:icon="@drawable/baseline_logout_24"
+        app:iconTint="@color/nice_blue"
+
+        app:layout_constraintBottom_toBottomOf="@+id/TopNavBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Pal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="144dp"
+        android:text="@string/Pal"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ParkPalView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ParkPalView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="VisualLintOverlap,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/ParkPalView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Park"
+        android:textColor="@color/nice_blue"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/TopNavBar"
+        app:layout_constraintEnd_toStartOf="@+id/Pal"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/TopNavBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/BottomNavBar"
+        android:layout_width="416dp"
+        android:layout_height="61dp"
+        android:background="@color/nice_blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintBounds" />
+
+    <Button
+        android:id="@+id/CarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/nice_blue"
+        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
+        app:icon="@drawable/baseline_directions_car_24"
+        app:iconGravity="textTop"
+        app:iconPadding="0dp"
+        app:iconSize="25dp"
+        app:iconTint="@color/material_dynamic_neutral90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/MapButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/MapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nice_blue"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="@string/Map"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
+        app:icon="@drawable/baseline_map_24"
+        app:iconGravity="top"
+        app:iconPadding="0dp"
+        app:iconTint="@color/material_dynamic_neutral90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/WalletButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/CarButton" />
+
+    <Button
+        android:id="@+id/HistoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/nice_blue"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="@string/History"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
+        app:icon="@drawable/baseline_history_24"
+        app:iconGravity="top"
+        app:iconPadding="0dp"
+        app:iconTint="@color/material_dynamic_neutral90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/WalletButton" />
+
+    <Button
+        android:id="@+id/WalletButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nice_blue"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="@string/Wallet"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
+        app:icon="@drawable/baseline_wallet_24"
+        app:iconGravity="top"
+        app:iconPadding="0dp"
+        app:iconTint="@color/material_dynamic_neutral90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/HistoryButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/MapButton" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="341dp"
+        android:layout_height="212dp"
+        android:layout_marginTop="120dp"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TopNavBar"
+        app:layout_constraintVertical_bias="0.201">
+
+        <TextView
+            android:id="@+id/Sector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Sector"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/SectorSpinner"
+            app:layout_constraintStart_toStartOf="@+id/SectorSpinner"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/SearchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/nice_blue"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="Search"
+            android:textColor="@color/material_dynamic_neutral90"
+            android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/SectorSpinner"
+            android:layout_width="291dp"
+            android:layout_height="57dp"
+            app:layout_constraintBottom_toTopOf="@+id/SearchButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Sector" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

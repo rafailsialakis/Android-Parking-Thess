@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/TopNavBar"
+        android:layout_width="416dp"
+        android:layout_height="101dp"
+        android:background="@drawable/honolulu"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds" />
+
+    <TextView
+        android:id="@+id/Pal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="144dp"
+        android:text="@string/Pal"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ParkPalView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ParkPalView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="VisualLintOverlap,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/ParkPalView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Park"
+        android:textColor="@color/nice_blue"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/TopNavBar"
+        app:layout_constraintEnd_toStartOf="@+id/Pal"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/TopNavBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/LogoutButton"
+        android:layout_width="54dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:background="@android:color/transparent"
+        app:icon="@drawable/baseline_logout_24"
+        app:iconTint="@color/nice_blue"
+
+        app:layout_constraintBottom_toBottomOf="@+id/TopNavBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="416dp"
+        android:layout_height="85dp"
+        android:background="@color/nice_blue"
+        android:backgroundTint="@color/nice_blue"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TopNavBar">
+
+        <TextView
+            android:id="@+id/PlateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="@string/Plate"
+            android:textColor="@color/material_dynamic_neutral90"
+            app:layout_constraintBottom_toTopOf="@+id/LicencePlateField"
+            app:layout_constraintStart_toStartOf="@+id/LicencePlateField" />
+
+
+        <EditText
+            android:id="@+id/SectorField"
+            android:layout_width="178dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/material_dynamic_neutral90"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/material_dynamic_neutral90"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/SectorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="@string/Sector"
+            android:textColor="@color/material_dynamic_neutral90"
+            app:layout_constraintBottom_toTopOf="@+id/SectorField"
+            app:layout_constraintStart_toStartOf="@+id/SectorField" />
+
+        <EditText
+            android:id="@+id/LicencePlateField"
+            android:layout_width="178dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/material_dynamic_neutral90"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/material_dynamic_neutral90"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="413dp"
+        android:layout_height="400dp"
+        android:headerBackground="@android:color/holo_orange_light"
+        android:numbersSelectorColor="@android:color/holo_orange_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <TextView
+        android:id="@+id/NewBalanceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="New Balance"
+        app:layout_constraintBottom_toTopOf="@+id/BalanceLeft"
+        app:layout_constraintStart_toStartOf="@+id/BalanceLeft"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker1"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/BalanceLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewBalanceLabel" />
+
+    <TextView
+        android:id="@+id/CostLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Cost"
+        app:layout_constraintBottom_toTopOf="@+id/CostOfService"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/CostOfService"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker1"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/CostOfService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CostLabel" />
+
+    <Button
+        android:id="@+id/StartPark"
+        android:layout_width="114dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/nice_blue"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Start"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:textSize="16sp"
+        android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

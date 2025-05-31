@@ -44,6 +44,12 @@ public class Sector implements Parcelable {
         return code;
     }
 
+    // In Sector.java, add:
+    public int getCapacity() {
+        return capacity;
+    }
+
+
     public int getAvailable_spots() {
         return available_spots;
     }

@@ -16,26 +16,33 @@ public class WalletActivity extends AppCompatActivity {
         setContentView(R.layout.wallet_activity);
         UserSession session = (UserSession) getIntent().getSerializableExtra("session");
         SectorList sectorList = getIntent().getParcelableExtra("sector");
+        if (sectorList == null) {
+            sectorList = new SectorList(this);
+        } else {
+            sectorList.initDbHelper(this);
+        }
         TextView euros = findViewById(R.id.EuroLabel);
         euros.setText(String.valueOf(session.getEuros()));
         TextView cents = findViewById(R.id.CentsLabel);
         int Numcents = session.getCents();
         cents.setText(String.format("%02d", Numcents));
+        SectorList finalSectorList = sectorList;
         findViewById(R.id.CarButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(WalletActivity.this, MainActivity.class);
                 i.putExtra("session", session);
-                i.putExtra("sector", sectorList);
+                i.putExtra("sector", finalSectorList);
                 startActivity(i);
             }
         });
+        SectorList finalSectorList1 = sectorList;
         findViewById(R.id.LogoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UserSession.isLoggedIn = false;
                 Intent i = new Intent(WalletActivity.this, LoginActivity.class);
-                i.putExtra("sector", sectorList);
+                i.putExtra("sector", finalSectorList1);
                 startActivity(i);
             }
         });
@@ -69,22 +76,25 @@ public class WalletActivity extends AppCompatActivity {
                 euros.setText(String.valueOf(balance));
             }
         });
+        SectorList finalSectorList2 = sectorList;
         findViewById(R.id.MapButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity(WalletActivity.this, MapActivity.class, session, sectorList);
+                LaunchActivity(WalletActivity.this, MapActivity.class, session, finalSectorList2);
             }
         });
+        SectorList finalSectorList3 = sectorList;
         findViewById(R.id.CarButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity(WalletActivity.this, MainActivity.class, session, sectorList);
+                LaunchActivity(WalletActivity.this, MainActivity.class, session, finalSectorList3);
             }
         });
+        SectorList finalSectorList4 = sectorList;
         findViewById(R.id.HistoryButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity(WalletActivity.this, LogActivity.class, session, sectorList);
+                LaunchActivity(WalletActivity.this, LogActivity.class, session, finalSectorList4);
             }
         });
     }

@@ -24,6 +24,11 @@ public class ParkActivity extends AppCompatActivity {
         setContentView(R.layout.park_activity);
         UserSession session = (UserSession) getIntent().getSerializableExtra("session");
         SectorList sectorList = getIntent().getParcelableExtra("sector");
+        if (sectorList == null) {
+            sectorList = new SectorList(this);
+        } else {
+            sectorList.initDbHelper(this);
+        }
         TextView cost = findViewById(R.id.CostOfService);
         TextView balance = findViewById(R.id.BalanceLeft);
         String formattedBalance = String.format("%d.%02d", session.getEuros(), session.getCents()) + "€";
@@ -32,6 +37,7 @@ public class ParkActivity extends AppCompatActivity {
         balance.setText(formattedBalance);
         cost.setText("0.00€"); // or String.format("%.2f", 0.0)
         TimePicker picker = findViewById(R.id.timePicker1);
+        SectorList finalSectorList2 = sectorList;
         picker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker timePicker, int hour, int minute) {
@@ -49,7 +55,7 @@ public class ParkActivity extends AppCompatActivity {
                     if(dayOfWeek == 7)
                         costpermin = 0; //Sunday is for free.
                     else
-                        costpermin = sectorList.getParkingCost();
+                        costpermin = finalSectorList2.getParkingCost();
                     double costToPark = minutesDiff * costpermin;
                     cost.setText(String.format("%.2f€", costToPark));
                     if(costToPark < accountbalance){
@@ -72,6 +78,8 @@ public class ParkActivity extends AppCompatActivity {
             }
         });
 
+        SectorList finalSectorList = sectorList;
+        SectorList finalSectorList3 = sectorList;
         parkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +125,7 @@ public class ParkActivity extends AppCompatActivity {
                     if(Licence.equals("") || (sectorcode.equals(""))){
                         Toast.makeText(getApplicationContext(), "Please enter both license plate and sector.", Toast.LENGTH_SHORT).show();
                     }else {
-                        Sector sector = sectorList.isInList(sectorcode);
+                        Sector sector = finalSectorList.isInList(sectorcode);
                         if(sector == null){
                             Toast.makeText(ParkActivity.this, "This sector doesn't exist.", Toast.LENGTH_SHORT).show();
                         }else{
@@ -130,11 +138,12 @@ public class ParkActivity extends AppCompatActivity {
                                 session.setEuros(newEuros);
                                 session.setCents(newCents);
                                 sector.newPark();
+                                finalSectorList3.updateSectorAvailability(sectorcode, sector.getAvailable_spots());
                                 session.insertLog(currentTimeStr,selectedTimeStr,hours,minutes);
                                 Toast.makeText(getApplicationContext(), "Parking started!", Toast.LENGTH_SHORT).show();
                                 Intent resultIntent = new Intent(ParkActivity.this, MainActivity.class);
                                 resultIntent.putExtra("session", session);
-                                resultIntent.putExtra("sector", sectorList);
+                                resultIntent.putExtra("sector", finalSectorList);
                                 startActivity(resultIntent);
                             }
                         }
@@ -142,12 +151,13 @@ public class ParkActivity extends AppCompatActivity {
                 }
             }
         });
+        SectorList finalSectorList1 = sectorList;
         findViewById(R.id.LogoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UserSession.isLoggedIn = false;
                 Intent i = new Intent(ParkActivity.this, LoginActivity.class);
-                i.putExtra("sector", sectorList);
+                i.putExtra("sector", finalSectorList1);
                 startActivity(i);
             }
         });

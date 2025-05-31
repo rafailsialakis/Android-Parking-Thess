@@ -67,7 +67,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ParkPalView"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="VisualLintOverlap" />
+        tools:ignore="VisualLintOverlap,TextContrastCheck" />
+
+    <Button
+        android:id="@+id/LogoutButton"
+        android:layout_width="54dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:background="@android:color/transparent"
+        app:icon="@drawable/baseline_logout_24"
+        app:iconTint="@color/nice_blue"
+
+        app:layout_constraintBottom_toBottomOf="@+id/TopNavBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -126,7 +139,7 @@
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/StringOne"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -143,7 +156,7 @@
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/StringTwo"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/EasierView"
             app:layout_constraintTop_toBottomOf="@+id/EasierView"
             tools:ignore="TextSizeCheck" />
@@ -156,33 +169,35 @@
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/StringThree"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/TrackView"
             app:layout_constraintTop_toBottomOf="@+id/TrackView"
             tools:ignore="TextSizeCheck" />
 
         <ImageView
             android:id="@+id/HonoluluImage"
-            android:layout_width="16dp"
-            android:layout_height="18dp"
+            android:layout_width="16sp"
+            android:layout_height="18sp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
+            android:contentDescription="@string/Arrow"
             app:layout_constraintBottom_toBottomOf="@+id/ExpandView"
             app:layout_constraintEnd_toStartOf="@+id/ExpandView"
             app:layout_constraintTop_toTopOf="@+id/ExpandView"
             app:srcCompat="@drawable/baseline_arrow_forward_24" />
 
         <Button
-            android:id="@+id/RegisterButton"
+            android:id="@+id/toRegisterButton"
             android:layout_width="213dp"
             android:layout_height="48dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@android:color/white"
+            android:enabled="false"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/RegisterString"
             android:textColor="@color/nice_blue"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:theme="@style/Theme.Material3.Dark.BottomSheetDialog"
             app:layout_constraintBottom_toTopOf="@+id/EasierView"
             app:layout_constraintEnd_toEndOf="@+id/Arrow_three"
@@ -205,6 +220,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="VisualLintBounds,TextSizeCheck"
         android:elevation="8dp">
+
         <TextView
             android:id="@+id/TomorrowField"
             android:layout_width="88dp"
@@ -214,7 +230,7 @@
             android:textSize="8sp"
             app:layout_constraintStart_toStartOf="@+id/MonthSecondView"
             app:layout_constraintTop_toBottomOf="@+id/MonthSecondView"
-            tools:ignore="SmallSp" />
+            tools:ignore="SmallSp,TextSizeCheck" />
 
         <TextView
             android:id="@+id/MonthSecondView"
@@ -240,7 +256,7 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView9"
             app:layout_constraintStart_toStartOf="@+id/imageView9"
             app:layout_constraintTop_toTopOf="@+id/imageView9"
-            tools:ignore="VisualLintOverlap" />
+            tools:ignore="VisualLintOverlap,TextSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:id="@+id/imageView9"
@@ -253,7 +269,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView8"
             app:layout_constraintVertical_bias="0.043"
-            app:srcCompat="@drawable/baseline_calendar_today_24" />
+            app:srcCompat="@drawable/baseline_calendar_today_24"
+            tools:ignore="ImageContrastCheck"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/NewParkView"
@@ -276,7 +294,8 @@
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_calendar_today_24" />
+            app:srcCompat="@drawable/baseline_calendar_today_24"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/TodayView"
@@ -291,7 +310,7 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView8"
             app:layout_constraintStart_toStartOf="@+id/imageView8"
             app:layout_constraintTop_toTopOf="@+id/imageView8"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck,TextSizeCheck" />
 
         <TextView
             android:id="@+id/MonthFirstView"
@@ -313,7 +332,7 @@
             android:textSize="8sp"
             app:layout_constraintStart_toStartOf="@+id/MonthFirstView"
             app:layout_constraintTop_toBottomOf="@+id/MonthFirstView"
-            tools:ignore="SmallSp" />
+            tools:ignore="SmallSp,TextSizeCheck" />
 
         <TextView
             android:id="@+id/FirstDayPriceView"
@@ -338,7 +357,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/TomorrowField"
             app:layout_constraintStart_toStartOf="@+id/FirstDayPriceView"
-            app:layout_constraintTop_toTopOf="@+id/MonthSecondView" />
+            app:layout_constraintTop_toTopOf="@+id/MonthSecondView"
+            tools:ignore="TextSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button

@@ -22,6 +22,11 @@ public class MapActivity extends AppCompatActivity {
 
         session = (UserSession) getIntent().getSerializableExtra("session");
         sectorList = getIntent().getParcelableExtra("sector");
+        if (sectorList == null) {
+            sectorList = new SectorList(this);
+        } else {
+            sectorList.initDbHelper(this);
+        }
 
         Spinner sectorSpinner = findViewById(R.id.SectorSpinner);
 

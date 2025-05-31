@@ -21,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        list = getIntent().getParcelableExtra("sector");
+        SectorList list = getIntent().getParcelableExtra("sector");
         if (list == null) {
-            list = new SectorList();
+            list = new SectorList(this);
+        } else {
+            list.initDbHelper(this);
         }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -88,87 +89,92 @@ public class MainActivity extends AppCompatActivity {
         // Declare a single Intent variable here
         final Intent[] i = new Intent[1];
 
+        SectorList finalList = list;
         findViewById(R.id.WalletButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!UserSession.isLoggedIn) {
                     Toast.makeText(getApplicationContext(), "You must be logged in to access your wallet.", Toast.LENGTH_LONG).show();
                     i[0] = new Intent(MainActivity.this, LoginActivity.class);
-                    i[0].putExtra("sector", list);
+                    i[0].putExtra("sector", finalList);
                     startActivityForResult(i[0], 1);
                 } else {
                     i[0] = new Intent(MainActivity.this, WalletActivity.class);
                     i[0].putExtra("session", session);
-                    i[0].putExtra("sector", list);
+                    i[0].putExtra("sector", finalList);
                     startActivity(i[0]);
                 }
             }
         });
 
+        SectorList finalList1 = list;
         findViewById(R.id.MapButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!UserSession.isLoggedIn) {
                     Toast.makeText(getApplicationContext(), "You must be logged in to access maps.", Toast.LENGTH_LONG).show();
                     i[0] = new Intent(MainActivity.this, LoginActivity.class);
-                    i[0].putExtra("sector", list);
+                    i[0].putExtra("sector", finalList1);
                     startActivityForResult(i[0], 1);
                 } else {
                     i[0] = new Intent(MainActivity.this, MapActivity.class);
                     i[0].putExtra("session", session);
-                    i[0].putExtra("sector", list);
+                    i[0].putExtra("sector", finalList1);
                     startActivity(i[0]);
                 }
             }
         });
 
+        SectorList finalList2 = list;
         findViewById(R.id.newParkButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!UserSession.isLoggedIn) {
                     Toast.makeText(getApplicationContext(), "You must be logged in to acquire a parking spot.", Toast.LENGTH_LONG).show();
                     i[0] = new Intent(MainActivity.this, LoginActivity.class);
-                    i[0].putExtra("sector", list);
+                    i[0].putExtra("sector", finalList2);
                     startActivityForResult(i[0], 1);
                 } else {
                     if (session.getEuros() + session.getCents() == 0) {
                         Toast.makeText(getApplicationContext(), "In order to park, you have to deposit money.", Toast.LENGTH_LONG).show();
                         i[0] = new Intent(MainActivity.this, WalletActivity.class);
                         i[0].putExtra("session", session);
-                        i[0].putExtra("sector", list);
+                        i[0].putExtra("sector", finalList2);
                         startActivity(i[0]);
                     } else {
                         i[0] = new Intent(MainActivity.this, ParkActivity.class);
                         i[0].putExtra("session", session);
-                        i[0].putExtra("sector", list);
+                        i[0].putExtra("sector", finalList2);
                         startActivity(i[0]);
                     }
                 }
             }
         });
 
+        SectorList finalList3 = list;
         findViewById(R.id.LogoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UserSession.isLoggedIn = false;
                 i[0] = new Intent(MainActivity.this, LoginActivity.class);
-                i[0].putExtra("sector", list);
+                i[0].putExtra("sector", finalList3);
                 startActivity(i[0]);
             }
         });
 
+        SectorList finalList4 = list;
         findViewById(R.id.HistoryButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!UserSession.isLoggedIn) {
                     Toast.makeText(getApplicationContext(), "You must be logged in to check history.", Toast.LENGTH_LONG).show();
                     i[0] = new Intent(MainActivity.this, LoginActivity.class);
-                    i[0].putExtra("sector", list);
+                    i[0].putExtra("sector", finalList4);
                     startActivityForResult(i[0], 1);
                 } else {
                     i[0] = new Intent(MainActivity.this, LogActivity.class);
                     i[0].putExtra("session", session);
-                    i[0].putExtra("sector", list);
+                    i[0].putExtra("sector", finalList4);
                     startActivity(i[0]);
                 }
             }

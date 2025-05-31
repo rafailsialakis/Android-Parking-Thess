@@ -10,9 +10,7 @@ public class UserSession implements Serializable {
     private String password;
     private int euros;
     private int cents;
-
     private int totalParkingHours;
-
     private int totalParkingMinutes;
 
     private ArrayList<String> logsList;

@@ -23,6 +23,12 @@ public class LogActivity extends AppCompatActivity {
         UserSession session = (UserSession) getIntent().getSerializableExtra("session");
         SectorList sectorList = getIntent().getParcelableExtra("sector");
 
+        if (sectorList == null) {
+            sectorList = new SectorList(this);
+        } else {
+            sectorList.initDbHelper(this);
+        }
+
         ArrayList<String> logs = session.getLogsList();
 
         TextView logsTextView = findViewById(R.id.logsTextView);
@@ -41,31 +47,35 @@ public class LogActivity extends AppCompatActivity {
         TextView MinuteLabel = findViewById(R.id.MinuteLabel);
         HourLabel.setText(String.valueOf(session.getTotalParkingHours()));
         MinuteLabel.setText(String.valueOf(session.getTotalParkingMinutes()));
+        SectorList finalSectorList = sectorList;
         findViewById(R.id.LogoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UserSession.isLoggedIn = false;
                 Intent i = new Intent(LogActivity.this, LoginActivity.class);
-                i.putExtra("sector", sectorList);
+                i.putExtra("sector", finalSectorList);
                 startActivity(i);
             }
         });
+        SectorList finalSectorList3 = sectorList;
         findViewById(R.id.CarButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity(LogActivity.this, MainActivity.class, session, sectorList);
+                LaunchActivity(LogActivity.this, MainActivity.class, session, finalSectorList3);
             }
         });
+        SectorList finalSectorList1 = sectorList;
         findViewById(R.id.MapButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity(LogActivity.this, MapActivity.class, session, sectorList);
+                LaunchActivity(LogActivity.this, MapActivity.class, session, finalSectorList1);
             }
         });
+        SectorList finalSectorList2 = sectorList;
         findViewById(R.id.WalletButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity(LogActivity.this, WalletActivity.class, session, sectorList);
+                LaunchActivity(LogActivity.this, WalletActivity.class, session, finalSectorList2);
             }
         });
     }

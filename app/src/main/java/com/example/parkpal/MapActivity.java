@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,16 +37,11 @@ public class MapActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectorSpinner.setAdapter(adapter);
 
-        sectorSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
-            boolean firstSelect = true;
-
+        Button SearchButton = findViewById(R.id.SearchButton);
+        SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
-                if (firstSelect) {
-                    firstSelect = false; // Skip first call triggered on load
-                    return;
-                }
-                String selectedCode = parent.getItemAtPosition(position).toString();
+            public void onClick(View view) {
+                String selectedCode = sectorSpinner.getSelectedItem().toString();
                 Sector selectedSector = sectorList.isInList(selectedCode);
 
                 if (selectedSector != null) {
@@ -54,9 +50,6 @@ public class MapActivity extends AppCompatActivity {
                     Toast.makeText(MapActivity.this, "This sector doesn't exist.", Toast.LENGTH_SHORT).show();
                 }
             }
-
-            @Override
-            public void onNothingSelected(android.widget.AdapterView<?> parent) {}
         });
 
         // Logout button
